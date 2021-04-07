@@ -4,8 +4,8 @@
 * To generate .sig files with Vector instructions, see: https://github.com/Lampro-Mellon/riscv-torture
 
 # tutorial
-
 ```
+# debian:bullseye is recommended but many distros should work.
 # download renode
 mkdir renode
 wget https://dl.antmicro.com/projects/renode/builds/renode-latest.linux-portable.tar.gz -O - | tar xz --strip-components=1 -C renode
