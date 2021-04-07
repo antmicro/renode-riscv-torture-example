@@ -1,0 +1,41 @@
+using sysbus
+mach create "torture"
+machine LoadPlatformDescriptionFromString
+"""
+cpu: CPU.RiscV64 @ sysbus
+    cpuType: "rv64gc"
+    privilegeArchitecture: PrivilegeArchitecture.Priv1_10
+    timeProvider: clint
+
+clint: IRQControllers.CoreLevelInterruptor  @ sysbus 0x02000000
+    frequency: 66000000
+    [0, 1] -> cpu@[3, 7]
+
+dram: Memory.MappedMemory @ sysbus 0x80000000
+    size: 0x06400000
+"""
+
+sysbus LoadELF @test
+
+cpu AddHook `sysbus GetSymbolAddress "test_end"`
+"""
+time.sleep(1)
+start_addr = cpu.Bus.GetSymbolAddress("begin_signature")
+print("start_addr = %X" % start_addr)
+for a in range(0, 97*16, 16):
+  sys.stdout.write("SIG> ")
+  for j in range(16, 0, -1):
+    sys.stdout.write("%02x" % cpu.Bus.ReadByte(start_addr+a+j-1)) ,
+  sys.stdout.write("\n")
+
+emulationManager.CurrentEmulation.AddOrUpdateInBag('status', 'finished')
+"""
+
+start
+
+python
+"""
+while not emulationManager.CurrentEmulation.TryGetFromBag[str]('status')[0]:
+    time.sleep(0.1)
+monitor.Parse('q')
+"""
