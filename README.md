@@ -1,4 +1,6 @@
-# renode-riscv-tortute-example
+# renode-riscv-torture-example
+
+Copyright (c) 2021 [Antmicro](https://www.antmicro.com)
 
 * To generate ELF and .sig files, see: https://github.com/ucb-bar/riscv-torture
 * To generate ELF and .sig files with Vector instructions, see: https://github.com/Lampro-Mellon/riscv-torture
