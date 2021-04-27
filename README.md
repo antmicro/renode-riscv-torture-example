@@ -2,6 +2,8 @@
 
 Copyright (c) 2021 [Antmicro](https://www.antmicro.com)
 
+This repository provides scripts used to test [Renode](https://www.renode.io) RISC-V implementation against the [RISC-V Torture Tests](https://github.com/ucb-bar/riscv-torture).
+
 * To generate ELF and .sig files, see: https://github.com/ucb-bar/riscv-torture
 * To generate ELF and .sig files with Vector instructions, see: https://github.com/Lampro-Mellon/riscv-torture
 
