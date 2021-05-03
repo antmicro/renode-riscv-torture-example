@@ -1,4 +1,4 @@
-# renode-riscv-torture-example
+# Renode RISC-V Torture Example
 
 Copyright (c) 2021 [Antmicro](https://www.antmicro.com)
 
